@@ -1,0 +1,784 @@
+@import "tailwindcss";
+
+:root {
+  --u: calc(100vw / 1600);
+  --ink: #ffffff;
+  --ink-soft: rgba(255, 255, 255, 0.62);
+  --ink-faint: rgba(255, 255, 255, 0.44);
+  --rule: rgba(255, 255, 255, 0.055);
+  --card: #f2f3ef;
+  --card-ink: #23261f;
+  --card-label: #7c8177;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 1900px) {
+  :root {
+    --u: calc(1900px / 1600);
+  }
+}
+
+body {
+  font-family: var(--font-lexend), 'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── hero shell ── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: calc(880 * var(--u));
+  overflow: hidden;
+  isolation: isolate;
+  transition: background-color 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.8s ease;
+}
+
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: calc(-800 * var(--u));
+  margin-top: calc(-440 * var(--u));
+  width: calc(1600 * var(--u));
+  height: calc(880 * var(--u));
+}
+
+/* ── column guides ── */
+.guides {
+  position: absolute;
+  inset: calc(-40 * var(--u)) 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.guides i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--rule) 12%, var(--rule) 78%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* ── ghost wordmark ── */
+.ghost {
+  position: absolute;
+  z-index: 1;
+  left: calc(6 * var(--u));
+  bottom: calc(-64 * var(--u));
+  font-size: calc(310 * var(--u));
+  line-height: 0.78;
+  font-weight: 400;
+  letter-spacing: calc(30 * var(--u));
+  color: rgba(255, 255, 255, 0.055);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── dock ── */
+.dock-wrap {
+  position: absolute;
+  z-index: 5;
+  top: calc(38 * var(--u));
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.dock {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: calc(3 * var(--u));
+  height: calc(46 * var(--u));
+  padding: calc(5 * var(--u));
+  border-radius: calc(14 * var(--u));
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0) 42%), var(--dock-bg, rgba(34, 40, 31, 0.74));
+  box-shadow: 0 calc(8 * var(--u)) calc(22 * var(--u)) rgba(10, 14, 8, 0.3), inset 0 1px rgba(255, 255, 255, 0.06);
+  isolation: isolate;
+  transition: background-color 0.8s ease;
+}
+
+.dock-item {
+  position: relative;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  height: calc(36 * var(--u));
+  gap: calc(8 * var(--u));
+  padding: 0 calc(13 * var(--u));
+  transform-origin: 50% 0;
+  border: 1px solid transparent;
+  border-radius: calc(10 * var(--u));
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink-faint);
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: calc(11 * var(--u));
+  font-weight: 500;
+  letter-spacing: calc(1.5 * var(--u));
+  text-transform: uppercase;
+  white-space: nowrap;
+  will-change: width, height, transform;
+  transition: color 0.18s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.dock-item[data-near="true"],
+.dock-item.is-active {
+  z-index: 7;
+  color: var(--ink);
+  border-color: rgba(255, 255, 255, 0.19);
+  background: rgba(31, 37, 28, 0.94);
+  box-shadow: 0 calc(7 * var(--u)) calc(16 * var(--u)) rgba(10, 14, 8, 0.3);
+}
+
+.dock-item .glyph {
+  width: calc(14 * var(--u));
+  height: calc(14 * var(--u));
+  flex: none;
+  opacity: 0.66;
+  transition: opacity 0.18s var(--ease);
+}
+
+.dock-item .glyph svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dock-item[data-near="true"] .glyph,
+.dock-item.is-active .glyph {
+  opacity: 1;
+}
+
+/* ── headline & typography ── */
+.headline {
+  position: absolute;
+  z-index: 4;
+  left: calc(82 * var(--u));
+  top: calc(186 * var(--u));
+  font-size: calc(88 * var(--u));
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: calc(-2 * var(--u));
+  color: var(--ink);
+  will-change: transform;
+}
+
+.headline span {
+  display: block;
+  padding-bottom: 0.04em;
+}
+
+.headline span i {
+  display: inline-block;
+  font-style: normal;
+}
+
+.lede {
+  position: absolute;
+  z-index: 4;
+  left: calc(520 * var(--u));
+  top: calc(196 * var(--u));
+  width: calc(208 * var(--u));
+  font-size: calc(16.5 * var(--u));
+  line-height: calc(22 * var(--u));
+  font-weight: 300;
+  color: var(--ink-soft);
+}
+
+/* ── liquid metal controls ── */
+.pill-clip {
+  position: absolute;
+  z-index: 4;
+  left: calc(644 * var(--u));
+  top: calc(360 * var(--u));
+  width: calc(410 * var(--u));
+  height: calc(270 * var(--u));
+  margin: calc(-135 * var(--u)) 0 0 calc(-205 * var(--u));
+  clip-path: inset(calc(72 * var(--u)) calc(60 * var(--u)) calc(26 * var(--u)) calc(60 * var(--u)) round calc(62 * var(--u)));
+}
+
+.pill {
+  position: absolute;
+  inset: 0;
+  --mr: calc(150 * var(--u));
+  display: grid;
+  place-items: center;
+}
+
+.liquid-stage {
+  --lu: calc(var(--h) / 516);
+  --bh: var(--h);
+  --pad: calc(900 * var(--lu));
+  position: relative;
+  width: max-content;
+  height: max-content;
+  padding: var(--pad);
+  display: grid;
+  place-items: center;
+  touch-action: manipulation;
+  font-family: 'Lexend', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.liquid-stage--explore {
+  --h: calc(60.156 * var(--u));
+}
+.liquid-stage--play {
+  --h: calc(88.2288 * var(--u));
+}
+
+.liquid-plate {
+  position: absolute;
+  inset: var(--pad);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.014) 44%, rgba(255, 255, 255, 0) 64%), rgba(10, 12, 10, 0.42);
+  box-shadow: 0 calc(var(--h) * 0.08) calc(var(--h) * 0.18) rgba(0, 0, 0, 0.38),
+              0 calc(var(--h) * 0.24) calc(var(--h) * 0.5) rgba(0, 0, 0, 0.28),
+              0 calc(var(--h) * 0.48) calc(var(--h) * 0.96) rgba(0, 0, 0, 0.16),
+              inset 0 1px 0 rgba(255, 255, 255, 0.13),
+              inset 0 calc(var(--h) * -0.02) calc(var(--h) * 0.05) rgba(255, 255, 255, 0.05);
+  transition: box-shadow 0.38s cubic-bezier(0.22, 0.61, 0.36, 1), background 0.38s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.liquid-stage.hot .liquid-plate {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.02) 44%, rgba(255, 255, 255, 0) 64%), rgba(8, 10, 8, 0.5);
+  box-shadow: 0 calc(var(--h) * 0.1) calc(var(--h) * 0.22) rgba(0, 0, 0, 0.44),
+              0 calc(var(--h) * 0.32) calc(var(--h) * 0.66) rgba(0, 0, 0, 0.34),
+              0 calc(var(--h) * 0.66) calc(var(--h) * 1.32) rgba(0, 0, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.17),
+              inset 0 calc(var(--h) * -0.02) calc(var(--h) * 0.05) rgba(255, 255, 255, 0.06);
+}
+
+.liquid-fx {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.liquid-button {
+  position: relative;
+  height: var(--bh);
+  border: 0;
+  background: none;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.liquid-button:focus-visible {
+  outline: calc(4 * var(--lu)) solid rgba(255, 255, 255, 0.55);
+  outline-offset: calc(10 * var(--lu));
+}
+
+.liquid-button .ico {
+  display: block;
+  flex: none;
+  overflow: visible;
+}
+
+.liquid-button .lbl {
+  display: block;
+  transform: translateY(calc(2 * var(--lu)));
+}
+
+.liquid-button--explore {
+  padding: 0 calc(224 * var(--lu)) 0 calc(95 * var(--lu));
+  gap: calc(112 * var(--lu));
+  font-size: calc(140 * var(--lu));
+}
+
+.liquid-button--explore .ico {
+  width: calc(150 * var(--lu));
+  height: calc(150 * var(--lu));
+}
+
+.liquid-button--play {
+  width: var(--bh);
+  height: var(--bh);
+  padding: 0;
+}
+
+.liquid-button--play .ico {
+  width: calc(176 * var(--lu));
+  height: calc(176 * var(--lu));
+  margin-left: calc(14 * var(--lu));
+}
+
+.liquid-stage.press .liquid-plate {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.01) 44%, rgba(255, 255, 255, 0) 64%), rgba(7, 9, 7, 0.55);
+  box-shadow: 0 calc(var(--h) * 0.04) calc(var(--h) * 0.11) rgba(0, 0, 0, 0.46),
+              0 calc(var(--h) * 0.13) calc(var(--h) * 0.32) rgba(0, 0, 0, 0.36),
+              0 calc(var(--h) * 0.27) calc(var(--h) * 0.62) rgba(0, 0, 0, 0.22),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition-duration: 0.1s;
+}
+
+/* ── play wrap ── */
+.play-wrap {
+  position: absolute;
+  z-index: 4;
+  left: calc(470 * var(--u));
+  top: calc(428 * var(--u));
+  width: calc(130 * var(--u));
+  height: calc(130 * var(--u));
+  margin: calc(-65 * var(--u)) 0 0 calc(-65 * var(--u));
+  display: grid;
+  place-items: center;
+}
+
+.play-clip {
+  position: absolute;
+  width: calc(520 * var(--u));
+  height: calc(520 * var(--u));
+  display: grid;
+  place-items: center;
+  clip-path: inset(calc(195 * var(--u)) round 50%);
+}
+
+.play-glass {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.play-ring {
+  position: absolute;
+  inset: calc(15 * var(--u));
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+/* ── stats ── */
+.stat {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: calc(14 * var(--u));
+}
+
+.stat--a {
+  left: calc(84 * var(--u));
+  top: calc(660 * var(--u));
+}
+
+.stat--b {
+  left: calc(290 * var(--u));
+  top: calc(660 * var(--u));
+}
+
+.stat .mark {
+  width: calc(30 * var(--u));
+  height: calc(30 * var(--u));
+  flex: none;
+  color: var(--ink);
+}
+
+.stat dt {
+  font-size: calc(13.5 * var(--u));
+  font-weight: 300;
+  color: var(--ink-soft);
+}
+
+.stat dd {
+  font-size: calc(18 * var(--u));
+  font-weight: 400;
+  color: var(--ink);
+}
+
+/* ── cards ── */
+.card {
+  position: absolute;
+  background: var(--card);
+  border-radius: calc(46 * var(--u));
+  box-shadow: 0 calc(30 * var(--u)) calc(70 * var(--u)) rgba(16, 21, 13, 0.3);
+  transition: box-shadow 0.8s var(--ease), background-color 0.8s ease;
+}
+
+.card--about {
+  left: calc(890 * var(--u));
+  top: calc(200 * var(--u));
+  width: calc(330 * var(--u));
+  height: calc(305 * var(--u));
+}
+
+.card--stove {
+  z-index: 4;
+  will-change: transform;
+  left: calc(1237 * var(--u));
+  top: calc(482 * var(--u));
+  width: calc(328 * var(--u));
+  height: calc(310 * var(--u));
+}
+
+.card .label {
+  position: absolute;
+  left: calc(38 * var(--u));
+  font-size: calc(15.5 * var(--u));
+  font-weight: 300;
+  color: var(--card-label);
+}
+
+.card h2 {
+  position: absolute;
+  left: calc(38 * var(--u));
+  font-size: calc(26.2 * var(--u));
+  line-height: calc(27 * var(--u));
+  font-weight: 400;
+  letter-spacing: calc(-0.5 * var(--u));
+  color: var(--card-ink);
+}
+
+.card--about .label {
+  top: calc(152 * var(--u));
+}
+.card--about h2 {
+  top: calc(177 * var(--u));
+  width: calc(142 * var(--u));
+}
+.card--stove .label {
+  top: calc(45 * var(--u));
+}
+.card--stove h2 {
+  top: calc(70 * var(--u));
+}
+
+.card figure {
+  position: absolute;
+  left: calc(14 * var(--u));
+  right: calc(14 * var(--u));
+  border-radius: calc(34 * var(--u));
+  overflow: hidden;
+  isolation: isolate;
+  background: #263025;
+}
+
+.card--stove figure {
+  bottom: calc(14 * var(--u));
+  height: calc(158 * var(--u));
+}
+.card--about figure {
+  top: calc(14 * var(--u));
+  height: calc(122 * var(--u));
+}
+
+.portal-media {
+  position: absolute;
+  inset: calc(-9 * var(--u));
+  z-index: 1;
+  display: block;
+  will-change: transform, clip-path;
+  transform: perspective(900px) translate3d(calc(var(--px, 0) * -11px), calc(var(--py, 0) * -7px), 0)
+    rotateY(calc(var(--px, 0) * -1.4deg)) rotateX(calc(var(--py, 0) * 0.9deg));
+  transform-origin: 50% 50%;
+}
+
+.pixel-reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: screen;
+}
+
+.knob-float {
+  position: absolute;
+  z-index: 4;
+  pointer-events: none;
+  left: calc(1142 * var(--u));
+  top: calc(427 * var(--u));
+  width: calc(58 * var(--u));
+  height: calc(58 * var(--u));
+}
+
+.knob-float > * {
+  pointer-events: auto;
+}
+.knob--about {
+  left: 0;
+  top: 0;
+}
+
+.card .knob,
+.knob--about {
+  position: absolute;
+  z-index: 4;
+  right: calc(20 * var(--u));
+  bottom: calc(20 * var(--u));
+  width: calc(58 * var(--u));
+  height: calc(58 * var(--u));
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #fbfcf8;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 calc(6 * var(--u)) calc(16 * var(--u)) rgba(16, 21, 13, 0.18);
+  transition: transform 0.5s var(--ease-out), background 0.4s var(--ease);
+}
+
+.knob--about {
+  right: auto;
+  bottom: auto;
+  width: calc(58 * var(--u));
+  height: calc(58 * var(--u));
+}
+.card--stove .knob {
+  width: calc(54 * var(--u));
+  height: calc(54 * var(--u));
+  right: calc(26 * var(--u));
+  bottom: calc(26 * var(--u));
+}
+.card .knob svg,
+.knob--about svg {
+  width: calc(19 * var(--u));
+  height: calc(19 * var(--u));
+  display: block;
+  color: #3f453a;
+}
+.card .knob:hover,
+.knob--about:hover {
+  transform: scale(1.1) rotate(8deg);
+  background: #fff;
+}
+.card:hover {
+  box-shadow: 0 calc(38 * var(--u)) calc(84 * var(--u)) rgba(16, 21, 13, 0.36);
+}
+
+/* ── scroll cue ── */
+.scroll {
+  position: absolute;
+  z-index: 4;
+  left: calc(846 * var(--u));
+  top: calc(690 * var(--u));
+  display: flex;
+  align-items: center;
+  gap: calc(12 * var(--u));
+  writing-mode: vertical-rl;
+  font-size: calc(11 * var(--u));
+  font-weight: 400;
+  letter-spacing: calc(4.4 * var(--u));
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.scroll .track {
+  position: relative;
+  width: 1px;
+  height: calc(56 * var(--u));
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+.scroll .track::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 40%;
+  background: rgba(255, 255, 255, 0.75);
+  animation: trickle 2.6s var(--ease) infinite;
+}
+@keyframes trickle {
+  0% {
+    transform: translateY(-105%);
+    opacity: 0;
+  }
+  22% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(255%);
+    opacity: 0;
+  }
+}
+
+/* ── entrance and parallax ── */
+.par {
+  will-change: transform;
+  transform: translate3d(
+    calc(var(--px, 0) * var(--pd, 0) * 1px),
+    calc(var(--py, 0) * var(--pd, 0) * 0.6px),
+    0
+  )
+  rotateY(calc(var(--px, 0) * var(--pr, 0) * 1deg))
+  rotateX(calc(var(--py, 0) * var(--pr, 0) * -0.6deg));
+}
+
+.mask {
+  clip-path: inset(0 0 0 0 round var(--mr, 0px));
+  transition: clip-path 1.05s var(--ease-out) var(--d, 0ms);
+}
+
+.mask-circle {
+  clip-path: circle(76% at 50% 50%);
+  transition: clip-path 1.1s var(--ease-out) var(--d, 0ms);
+}
+
+.fade {
+  opacity: 1;
+  transition: opacity 1.3s var(--ease) var(--d, 0ms);
+}
+
+/* ── mobile responsive (<= 900px) ── */
+@media (max-width: 900px) {
+  :root {
+    --u: calc(100vw / 760);
+  }
+  .stage {
+    margin-left: calc(-380 * var(--u));
+    margin-top: calc(-820 * var(--u));
+    width: calc(760 * var(--u));
+    height: calc(1640 * var(--u));
+  }
+  .hero {
+    height: auto;
+    min-height: calc(1640 * var(--u));
+  }
+  .headline {
+    left: calc(34 * var(--u));
+    top: calc(144 * var(--u));
+    font-size: calc(74 * var(--u));
+    line-height: 0.94;
+  }
+  .lede {
+    left: calc(34 * var(--u));
+    top: calc(304 * var(--u));
+    width: calc(520 * var(--u));
+    font-size: calc(20 * var(--u));
+    line-height: calc(27 * var(--u));
+  }
+  .pill-clip {
+    left: calc(34 * var(--u));
+    top: calc(430 * var(--u));
+    width: calc(506 * var(--u));
+    height: calc(334 * var(--u));
+    margin: calc(-167 * var(--u)) 0 0 calc(-79 * var(--u));
+    clip-path: inset(calc(93 * var(--u)) calc(74 * var(--u)) calc(1 * var(--u)) calc(74 * var(--u)) round calc(76 * var(--u)));
+  }
+  .liquid-stage--explore {
+    --h: calc(74.4152 * var(--u));
+  }
+  .play-wrap {
+    display: none;
+  }
+  .stat {
+    gap: calc(11 * var(--u));
+  }
+  .stat .mark {
+    width: calc(36 * var(--u));
+    height: calc(36 * var(--u));
+  }
+  .stat dt {
+    font-size: calc(16 * var(--u));
+    line-height: calc(22 * var(--u));
+  }
+  .stat dd {
+    font-size: calc(16.5 * var(--u));
+    line-height: calc(24 * var(--u));
+  }
+  .stat--a {
+    left: calc(34 * var(--u));
+    top: calc(540 * var(--u));
+  }
+  .stat--b {
+    left: calc(396 * var(--u));
+    top: calc(540 * var(--u));
+  }
+  .card {
+    border-radius: calc(40 * var(--u));
+  }
+  .card--about {
+    left: calc(34 * var(--u));
+    top: calc(1050 * var(--u));
+    width: calc(692 * var(--u));
+    height: calc(250 * var(--u));
+  }
+  .card--about .label {
+    top: calc(96 * var(--u));
+  }
+  .card--about h2 {
+    top: calc(124 * var(--u));
+    width: calc(400 * var(--u));
+    font-size: calc(32 * var(--u));
+    line-height: calc(36 * var(--u));
+  }
+  .card--stove {
+    left: calc(34 * var(--u));
+    top: calc(1324 * var(--u));
+    width: calc(692 * var(--u));
+    height: calc(268 * var(--u));
+  }
+  .card--stove h2 {
+    font-size: calc(32 * var(--u));
+  }
+  .card--stove figure {
+    left: auto;
+    right: calc(16 * var(--u));
+    bottom: calc(16 * var(--u));
+    width: calc(300 * var(--u));
+    height: calc(150 * var(--u));
+  }
+  .card--about figure {
+    left: auto;
+    right: calc(16 * var(--u));
+    top: calc(16 * var(--u));
+    width: calc(224 * var(--u));
+    height: calc(218 * var(--u));
+  }
+  .card .knob {
+    right: calc(24 * var(--u));
+    bottom: calc(24 * var(--u));
+  }
+  .card--stove .knob {
+    right: calc(30 * var(--u));
+    bottom: calc(30 * var(--u));
+  }
+  .scroll {
+    left: calc(702 * var(--u));
+    top: calc(470 * var(--u));
+  }
+  .ghost {
+    font-size: calc(184 * var(--u));
+    letter-spacing: calc(14 * var(--u));
+    bottom: calc(660 * var(--u));
+    left: calc(-10 * var(--u));
+  }
+}
