@@ -6,13 +6,21 @@ import { LiquidMetalButton } from './LiquidMetalButton';
 import { SylvaDock } from './SylvaDock';
 import { SylvaCard } from './SylvaCard';
 import { SylvaVariant, SYLVA_VARIANTS } from './types';
+import { KTR_HERO, KtrHeroContent } from '../../content/ktr';
 
 interface SylvaHeroProps {
   initialVariant?: SylvaVariant;
   className?: string;
+  content?: KtrHeroContent;
+  showThemeSwitcher?: boolean;
 }
 
-export function SylvaHero({ initialVariant = 'living-green', className = '' }: SylvaHeroProps) {
+export function SylvaHero({
+  initialVariant = 'living-green',
+  className = '',
+  content = KTR_HERO,
+  showThemeSwitcher = false,
+}: SylvaHeroProps) {
   const [variant, setVariant] = useState<SylvaVariant>(initialVariant);
   const [isReady, setIsReady] = useState(false);
   const heroRef = useRef<HTMLElement | null>(null);
@@ -121,8 +129,8 @@ export function SylvaHero({ initialVariant = 'living-green', className = '' }: S
       {/* Top Floating Glass Proximity Dock */}
       <SylvaDock currentVariant={variant} onVariantChange={setVariant} />
 
-      {/* Interactive Variant Switcher Pill Floating in Bottom Right */}
-      <aside className="fixed bottom-6 right-6 z-50 flex items-center gap-1.5 p-1.5 rounded-full backdrop-blur-md bg-black/40 border border-white/10 shadow-2xl transition-all duration-300 hover:border-white/25">
+      {/* Optional visual theme switcher; hidden for the public KTR experience by default. */}
+      {showThemeSwitcher && <aside className="fixed bottom-6 right-6 z-50 flex items-center gap-1.5 p-1.5 rounded-full backdrop-blur-md bg-black/40 border border-white/10 shadow-2xl transition-all duration-300 hover:border-white/25">
         {(Object.keys(SYLVA_VARIANTS) as SylvaVariant[]).map((vKey) => {
           const item = SYLVA_VARIANTS[vKey];
           const active = variant === vKey;
@@ -142,7 +150,7 @@ export function SylvaHero({ initialVariant = 'living-green', className = '' }: S
             </button>
           );
         })}
-      </aside>
+      </aside>}
 
       {/* 1600x880 Centered Responsive Stage */}
       <div className="stage" id="stage">
@@ -153,19 +161,21 @@ export function SylvaHero({ initialVariant = 'living-green', className = '' }: S
           <i style={{ left: 'calc(1091 * var(--u))' }} />
         </div>
 
-        {/* Ghost Wordmark (z 1) */}
+        {/* Quiet visual mark keeps the original composition while branding the portal. */}
         <div className="ghost fade" style={{ ['--d' as any]: '1150ms' }} aria-hidden="true">
-          SYLVA
+          KTR
         </div>
 
-        {/* Card 1: Our Ethos (Sits behind the canvas near root so moss drapes over shoulder) */}
+        {/* Card 1: KTR overview (keeps the reference composition intact). */}
         <SylvaCard
           type="about"
-          label="Our Ethos"
-          title="Let the wild lead."
+          label="Tentang KTR"
+          title="Udara bersih adalah hak bersama."
           delay={760}
           portalDelay={920}
         />
+
+        <p className="hero-eyebrow" aria-label={content.eyebrow}>{content.eyebrow}</p>
 
         {/* Headline */}
         <h1
@@ -176,10 +186,7 @@ export function SylvaHero({ initialVariant = 'living-green', className = '' }: S
           }}
         >
           <span>
-            <i style={{ ['--d' as any]: '260ms' }}>Step into</i>
-          </span>
-          <span>
-            <i style={{ ['--d' as any]: '360ms' }}>the living world</i>
+            <i style={{ ['--d' as any]: '260ms' }}>{content.headline}</i>
           </span>
         </h1>
 
@@ -192,7 +199,7 @@ export function SylvaHero({ initialVariant = 'living-green', className = '' }: S
             ['--pr' as any]: 1,
           }}
         >
-          We restore wild places through patient design, native planting, and a deeper kind of stewardship.
+          {content.description}
         </p>
 
         {/* Explore Button (Liquid Metal WebGL2 Dispersion Shader) */}
@@ -205,7 +212,11 @@ export function SylvaHero({ initialVariant = 'living-green', className = '' }: S
               ['--pr' as any]: 1.4,
             }}
           >
-            <LiquidMetalButton variant="explore" label="Explore the work" />
+            <LiquidMetalButton
+              variant="explore"
+              label={content.primaryCta}
+              onClick={() => document.querySelector('#lapor')?.scrollIntoView({ behavior: 'smooth' })}
+            />
           </div>
         </div>
 
@@ -218,7 +229,10 @@ export function SylvaHero({ initialVariant = 'living-green', className = '' }: S
         >
           <span className="play-clip">
             <span className="play-glass mask-circle" style={{ ['--d' as any]: '900ms' }}>
-              <LiquidMetalButton variant="play" />
+              <LiquidMetalButton
+                variant="play"
+                onClick={() => document.querySelector('#edukasi')?.scrollIntoView({ behavior: 'smooth' })}
+              />
             </span>
           </span>
           <span className="play-ring mask-circle" style={{ ['--d' as any]: '840ms' }} aria-hidden="true" />
@@ -274,13 +288,14 @@ export function SylvaHero({ initialVariant = 'living-green', className = '' }: S
           </div>
         </dl>
 
-        {/* Card 2: Field Note 07 */}
+        {/* Card 2: reporting guide */}
         <SylvaCard
           type="stove"
-          label="Field Note 07"
-          title="After the Rain"
+          label="Panduan Warga"
+          title="Lapor dengan aman."
           delay={880}
           portalDelay={1080}
+          onKnobClick={() => document.querySelector('#lapor')?.scrollIntoView({ behavior: 'smooth' })}
         />
 
         {/* Scroll Cue */}
@@ -290,9 +305,9 @@ export function SylvaHero({ initialVariant = 'living-green', className = '' }: S
             ['--d' as any]: '1040ms',
             ['--pd' as any]: 9,
           }}
-          href="#discover"
+          href="#edukasi"
         >
-          Discover
+          Edukasi
           <span className="track" />
         </a>
       </div>

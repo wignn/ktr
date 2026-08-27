@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Lexend } from 'next/font/google';
 import './globals.css';
+import "@designcodeio/threeui/style.css";
 
 const lexend = Lexend({
   subsets: ['latin'],
