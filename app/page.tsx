@@ -132,6 +132,7 @@ export default function Home() {
     }
 
     setIsUploading(true);
+    let uploadedEvidenceUrl: string | undefined = undefined;
     let uploadedEvidenceName: string | undefined = undefined;
 
     // Unggah file ke API Vercel Blob jika ada berkas yang dipilih
@@ -147,6 +148,7 @@ export default function Home() {
 
         if (response.ok) {
           const uploadData = await response.json();
+          uploadedEvidenceUrl = uploadData.url;
           uploadedEvidenceName = uploadData.isMock
             ? `${evidenceFile.name} (Simulasi)`
             : evidenceFile.name;
@@ -159,14 +161,39 @@ export default function Home() {
       }
     }
 
-    setIsUploading(false);
-
-    // Generate unique Ticket ID
-    const randomHex = Math.random().toString(36).substring(2, 6).toUpperCase();
-    const ticketId = `KTR-${randomHex}-2026`;
-
+    // Direct save to PostgreSQL Database via Next.js Serverless API Route
+    let ticketId = "";
     const selectedTypeObj = KTR_REPORT.types.find((t) => t.value === reportType);
     const selectedSettingObj = KTR_SETTINGS.find((s) => s.id === settingCategory);
+
+    try {
+      const apiResponse = await fetch("/api/reports", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          reporterInitials: reporterInitials.trim().toUpperCase(),
+          violationType: selectedTypeObj ? selectedTypeObj.label : reportType,
+          settingCategory: selectedSettingObj ? selectedSettingObj.name : settingCategory,
+          violationLocation: locationName.trim(),
+          description: description.trim(),
+          evidenceUrl: uploadedEvidenceUrl || uploadedEvidenceName || null,
+        }),
+      });
+
+      if (apiResponse.ok) {
+        const data = await apiResponse.json();
+        ticketId = data.ticketId;
+      }
+    } catch (err) {
+      console.warn("API report submit fallback to client state:", err);
+    }
+
+    if (!ticketId) {
+      const randomHex = Math.random().toString(36).substring(2, 6).toUpperCase();
+      ticketId = `KTR-${randomHex}-2026`;
+    }
+
+    setIsUploading(false);
 
     const newReport: KtrSavedReport = {
       ticketId,
@@ -187,7 +214,7 @@ export default function Home() {
       notes: "Laporan Anda berhasil masuk ke antrean verifikasi petugas satgas setempat.",
     };
 
-    // Save to demo state & local storage timestamp
+    // Save to local in-memory store & local storage timestamp
     DEMO_REPORTS[ticketId] = newReport;
     localStorage.setItem("ktr_last_submit_timestamp", now.toString());
 
@@ -195,10 +222,40 @@ export default function Home() {
     setIsSubmitted(true);
   };
 
-  const handleTrackTicket = (e: React.FormEvent) => {
+  const handleTrackTicket = async (e: React.FormEvent) => {
     e.preventDefault();
     setHasSearched(true);
     const cleanId = searchTicketId.trim().toUpperCase();
+
+    // 1. Try checking Serverless PostgreSQL Database via API Route
+    try {
+      const response = await fetch(`/api/reports?ticketId=${encodeURIComponent(cleanId)}`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.found && data.report) {
+          const selectedTypeObj = KTR_REPORT.types.find((t) => t.value === data.report.violationType);
+          const selectedSettingObj = KTR_SETTINGS.find((s) => s.id === data.report.settingCategory);
+
+          setSearchedReport({
+            ticketId: data.report.ticketId,
+            reporterInitials: data.report.reporterInitials,
+            reportTypeLabel: selectedTypeObj ? selectedTypeObj.label : data.report.violationType,
+            settingCategoryLabel: selectedSettingObj ? selectedSettingObj.name : data.report.settingCategory,
+            locationName: data.report.violationLocation,
+            description: data.report.description,
+            evidenceName: data.report.evidenceUrl || undefined,
+            status: data.report.status,
+            notes: data.report.notes,
+            createdAt: data.report.createdAt,
+          });
+          return;
+        }
+      }
+    } catch (err) {
+      console.warn("DB lookup fallback to local state:", err);
+    }
+
+    // 2. Fallback to demo state
     if (DEMO_REPORTS[cleanId]) {
       setSearchedReport(DEMO_REPORTS[cleanId]);
     } else {
