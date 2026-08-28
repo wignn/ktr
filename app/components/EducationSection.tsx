@@ -40,7 +40,7 @@ export default function EducationSection({ onSelectFact }: EducationSectionProps
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: idx * 0.08, ease: "easeOut" }}
             onClick={() => onSelectFact(fact)}
-            className="p-6 rounded-xl bg-white border border-slate-200 hover:border-slate-400 transition-colors space-y-3 cursor-pointer group flex flex-col justify-between"
+            className="p-6 rounded-xl col bg-white border border-slate-200 hover:border-slate-400 transition-colors space-y-3 cursor-pointer group flex flex-col justify-between"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">

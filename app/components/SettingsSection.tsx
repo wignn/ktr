@@ -27,7 +27,7 @@ export default function SettingsSection() {
       </div>
 
       {/* Timeline List */}
-      <div className="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-px before:bg-slate-200">
+      <div className="relative pl-7 sm:pl-8 space-y-6 before:absolute before:left-2.5 sm:before:left-3 before:top-2 before:bottom-2 before:w-px before:bg-slate-200">
         {KTR_SETTINGS.map((setting, idx) => (
           <motion.div
             key={setting.id}
@@ -38,7 +38,7 @@ export default function SettingsSection() {
             className="relative flex flex-col md:flex-row gap-4 items-start"
           >
             {/* Node Dot Timeline */}
-            <div className="absolute -left-[1.85rem] top-4 w-6 h-6 rounded-full bg-white border border-slate-300 flex items-center justify-center font-mono text-xs font-semibold text-slate-600 z-10">
+            <div className="absolute -left-7 sm:-left-8 top-4 w-6 h-6 rounded-full bg-white border border-slate-300 flex items-center justify-center font-mono text-xs font-semibold text-slate-600 z-10 shrink-0">
               {idx + 1}
             </div>
 
@@ -59,7 +59,7 @@ export default function SettingsSection() {
               </div>
 
               {/* Detail Text */}
-              <div className="md:col-span-3 p-5 flex flex-col justify-between space-y-3 bg-white">
+              <div className="md:col-span-3 p-4 sm:p-5 flex flex-col justify-between space-y-3 bg-white">
                 <div className="space-y-1.5">
                   <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded inline-block">
                     Area Terproteksi
@@ -80,7 +80,7 @@ export default function SettingsSection() {
                     {setting.examples.map((ex, i) => (
                       <span
                         key={i}
-                        className="text-xs px-2.5 py-0.5 rounded bg-slate-50 border border-slate-200 text-slate-700"
+                        className="text-[11px] sm:text-xs px-2.5 py-0.5 rounded bg-slate-50 border border-slate-200 text-slate-700"
                       >
                         {ex}
                       </span>
