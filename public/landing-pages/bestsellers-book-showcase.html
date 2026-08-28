@@ -11,18 +11,18 @@
   <title>Bahaya Merokok & Kawasan Tanpa Rokok (KTR)</title>
   <style>
     :root {
-      --ink: #29251d;
-      --ink-deep: #1d1a15;
-      --ink-soft: #3a382b;
-      --pink: #c3a47b;
-      --pink-bright: #dbc39c;
-      --text: #eee2ca;
-      --muted: #c5b79e;
-      --periwinkle: #b7976c;
-      --sage: #89946f;
-      --clay: #a96346;
-      --moss: #5f684f;
-      --paper: #eadfc7;
+      --ink: #101914;
+      --ink-deep: #0a110d;
+      --ink-soft: #192a20;
+      --pink: #2d5a43;
+      --pink-bright: #437a5f;
+      --text: #f0f7f4;
+      --muted: #94c4aa;
+      --periwinkle: #2d5a43;
+      --sage: #234836;
+      --clay: #e11d48;
+      --moss: #1b3a2b;
+      --paper: #f0f7f4;
       --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
         Baskerville, Georgia, serif;
       --ease: cubic-bezier(.2, .78, .2, 1);
@@ -67,9 +67,9 @@
       min-height: 100svh;
       overflow: hidden;
       background:
-        radial-gradient(circle at 49% 84%, rgba(117, 102, 71, .2), transparent 34%),
-        radial-gradient(circle at 14% 4%, rgba(100, 112, 77, .12), transparent 28%),
-        linear-gradient(180deg, #343025 0%, var(--ink) 48%, #211e18 100%);
+        radial-gradient(circle at 49% 84%, rgba(16, 185, 129, .2), transparent 34%),
+        radial-gradient(circle at 14% 4%, rgba(5, 150, 105, .15), transparent 28%),
+        linear-gradient(180deg, #192a20 0%, var(--ink) 48%, #0a110d 100%);
     }
 
     .stage::after {
@@ -1362,10 +1362,10 @@
     <header class="topbar">
       <a class="brand" href="#" aria-label="Portal KTR home">Portal KTR</a>
       <div class="nav-actions">
-        <button class="icon-button" id="menuButton" type="button" aria-label="Open menu" aria-expanded="false">
+        <!-- <button class="icon-button" id="menuButton" type="button" aria-label="Open menu" aria-expanded="false">
           <span class="menu-glyph" aria-hidden="true"></span>
-        </button>
-        <button class="ticket-button" type="button" data-toast="The collection is complete.">The Collection</button>
+        </button> -->
+        <!-- <button class="ticket-button" type="button" data-toast="The collection is complete.">The Collection</button> -->
       </div>
     </header>
 
@@ -1471,44 +1471,43 @@
       <div class="detail-scroll" id="detailScroll" tabindex="0" aria-label="Getting started guide">
         <p class="detail-description" id="detailDescription"></p>
         <section class="doc-section" aria-labelledby="gettingStartedLabel">
-          <p class="doc-label" id="gettingStartedLabel">Getting started</p>
+          <p class="doc-label" id="gettingStartedLabel">Materi Ringkasan</p>
           <ol class="doc-steps" id="detailSteps"></ol>
         </section>
         <section class="doc-section" aria-labelledby="firstPromptLabel">
-          <p class="doc-label" id="firstPromptLabel">Your first prompt</p>
+          <p class="doc-label" id="firstPromptLabel">Poin Kunci & Edukasi</p>
           <div class="prompt-block"><code id="detailPrompt"></code></div>
         </section>
         <section class="doc-section" aria-labelledby="reviewLabel">
-          <p class="doc-label" id="reviewLabel">Before you ship</p>
+          <p class="doc-label" id="reviewLabel">Dampak & Manfaat Sehat</p>
           <p class="doc-review" id="detailReview"></p>
         </section>
       </div>
       <div class="bottom-dock">
         <div class="meta-row" aria-label="Field edition and publication year">
           <div class="stars" aria-label="Field edition">
-            <span>✦</span><span>✦</span><span>✦</span><span>✦</span><span class="dim">◇</span>
           </div>
           <span class="meta-divider" aria-hidden="true"></span>
-          <span class="review-source">Field Notes</span>
-          <span class="year" id="detailYear">2026</span>
+          <span class="review-source"></span>
+          <span class="year" id="detailYear"></span>
         </div>
-        <hr class="detail-rule">
+        <!-- <hr class="detail-rule">
         <div class="action-rail" aria-label="Field manual actions">
-          <button class="pill language" type="button" data-toast="Field edition · 2026">
+          <a href="#bahaya" class="pill language" data-close-detail>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/>
               <path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z" fill="none" stroke="currentColor" stroke-width="1.7"/>
             </svg>
-            Field Edition
-          </button>
-          <button class="pill" type="button" data-toast="Notes opened.">Read Notes</button>
-          <button class="pill" type="button" data-toast="Guide opened.">View Guide</button>
-          <button class="pill icon-only" id="saveButton" type="button" aria-label="Save book" aria-pressed="false">
+            Bahaya Merokok
+          </a>
+          <a href="#tatanan" class="pill" data-close-detail>7 Tatanan KTR</a>
+          <a href="#lapor" class="pill" data-close-detail>Form Pengaduan</a>
+          <button class="pill icon-only" id="saveButton" type="button" aria-label="Simpan modul" aria-pressed="false">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M6.8 4.2h10.4v15.6L12 16.6l-5.2 3.2V4.2Z"/>
             </svg>
           </button>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -1528,9 +1527,9 @@
 
     <nav class="menu-layer" id="menuLayer" aria-label="Site menu" inert>
       <ul class="menu-list">
-        <li><a class="menu-link" href="#" data-menu-close>Volumes</a></li>
-        <li><a class="menu-link" href="#notes" data-menu-close data-toast="Field notes are coming soon.">Notes</a></li>
-        <li><a class="menu-link" href="#index" data-menu-close data-toast="An index of tools for thought.">Index</a></li>
+        <li><a class="menu-link" href="#bahaya" data-menu-close>Bahaya Merokok</a></li>
+        <li><a class="menu-link" href="#tatanan" data-menu-close>7 Tatanan KTR</a></li>
+        <li><a class="menu-link" href="#lapor" data-menu-close>Form Pengaduan</a></li>
       </ul>
     </nav>
   </main>
@@ -1845,6 +1844,12 @@
       });
 
       document.addEventListener("click", (event) => {
+        const closeDetailTarget = event.target.closest("[data-close-detail]");
+        if (closeDetailTarget) {
+          closeDetail();
+          return;
+        }
+
         const toastTarget = event.target.closest("[data-toast]");
         if (toastTarget) {
           event.preventDefault();

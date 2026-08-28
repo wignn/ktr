@@ -11,8 +11,8 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-  title: 'Sylva — Step into the living world',
-  description: 'We restore wild places through patient design, native planting, and a deeper kind of stewardship.',
+  title: 'Portal Kawasan Tanpa Rokok (KTR) — Kabupaten Karawang',
+  description: 'Portal Edukasi Bahaya Merokok, Regulasi Hukum KTR, dan Layanan Pengaduan Pelanggaran Warga Bebas Asap Rokok.',
 };
 
 export default function RootLayout({
