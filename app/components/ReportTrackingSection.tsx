@@ -147,16 +147,27 @@ export default function ReportTrackingSection({
                   </div>
                 </div>
 
-                {searchedReport.evidenceName && (
+                {(searchedReport.evidenceUrl || searchedReport.evidenceName) && (
                   <div className="flex items-start gap-2 text-xs">
                     <Paperclip className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
                     <div>
                       <span className="text-slate-400 block font-mono text-[10px]">
                         Bukti Pelanggaran Terlampir:
                       </span>
-                      <span className="text-emerald-800 font-mono text-xs font-semibold">
-                        {searchedReport.evidenceName}
-                      </span>
+                      {searchedReport.evidenceUrl ? (
+                        <a
+                          href={searchedReport.evidenceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-emerald-800 hover:text-emerald-900 font-mono text-xs font-semibold underline underline-offset-2 flex items-center gap-1 transition-colors break-all"
+                        >
+                          {searchedReport.evidenceName || searchedReport.evidenceUrl}
+                        </a>
+                      ) : (
+                        <span className="text-emerald-800 font-mono text-xs font-semibold">
+                          {searchedReport.evidenceName}
+                        </span>
+                      )}
                     </div>
                   </div>
                 )}

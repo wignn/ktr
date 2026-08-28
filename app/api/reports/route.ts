@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { getPrisma } from "@/lib/prisma";
 
 export async function POST(request: Request) {
   try {
@@ -36,23 +36,26 @@ export async function POST(request: Request) {
     let report = null;
     let isDatabaseSaved = false;
 
-    try {
-      report = await prisma.report.create({
-        data: {
-          ticketId,
-          reporterInitials: reporterInitials.trim().toUpperCase(),
-          violationType: violationType || "Lainnya",
-          settingCategory: settingCategory || "umum",
-          violationLocation: violationLocation.trim(),
-          description: description.trim(),
-          evidenceUrl: evidenceUrl || null,
-          status: "PENDING",
-          notes: "Laporan Anda berhasil masuk ke antrean verifikasi petugas satgas setempat.",
-        },
-      });
-      isDatabaseSaved = true;
-    } catch (dbError) {
-      console.warn("Database PostgreSQL/Prisma connection skipped or unconfigured, using fallback response:", dbError);
+    const prisma = getPrisma();
+    if (prisma) {
+      try {
+        report = await prisma.report.create({
+          data: {
+            ticketId,
+            reporterInitials: reporterInitials.trim().toUpperCase(),
+            violationType: violationType || "Lainnya",
+            settingCategory: settingCategory || "umum",
+            violationLocation: violationLocation.trim(),
+            description: description.trim(),
+            evidenceUrl: evidenceUrl || null,
+            status: "PENDING",
+            notes: "Laporan Anda berhasil masuk ke antrean verifikasi petugas satgas setempat.",
+          },
+        });
+        isDatabaseSaved = true;
+      } catch (dbError) {
+        console.warn("Database save skipped:", dbError);
+      }
     }
 
     return NextResponse.json({
@@ -92,36 +95,39 @@ export async function GET(request: Request) {
       );
     }
 
-    try {
-      const report = await prisma.report.findUnique({
-        where: { ticketId: ticketId.trim().toUpperCase() },
-      });
-
-      if (report) {
-        return NextResponse.json({
-          found: true,
-          report: {
-            ticketId: report.ticketId,
-            reporterInitials: report.reporterInitials,
-            violationType: report.violationType,
-            settingCategory: report.settingCategory,
-            violationLocation: report.violationLocation,
-            description: report.description,
-            evidenceUrl: report.evidenceUrl,
-            status: report.status === "PENDING" ? "Menunggu review" : report.status,
-            notes: report.notes || "Laporan sedang ditinjau oleh petugas satgas.",
-            createdAt: new Date(report.createdAt).toLocaleDateString("id-ID", {
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
-            }) + " WIB",
-          },
+    const prisma = getPrisma();
+    if (prisma) {
+      try {
+        const report = await prisma.report.findUnique({
+          where: { ticketId: ticketId.trim().toUpperCase() },
         });
+
+        if (report) {
+          return NextResponse.json({
+            found: true,
+            report: {
+              ticketId: report.ticketId,
+              reporterInitials: report.reporterInitials,
+              violationType: report.violationType,
+              settingCategory: report.settingCategory,
+              violationLocation: report.violationLocation,
+              description: report.description,
+              evidenceUrl: report.evidenceUrl,
+              status: report.status === "PENDING" ? "Menunggu review" : report.status,
+              notes: report.notes || "Laporan sedang ditinjau oleh petugas satgas.",
+              createdAt: new Date(report.createdAt).toLocaleDateString("id-ID", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              }) + " WIB",
+            },
+          });
+        }
+      } catch (dbError) {
+        console.warn("Database lookup skipped:", dbError);
       }
-    } catch (dbError) {
-      console.warn("Database lookup error:", dbError);
     }
 
     return NextResponse.json({ found: false });

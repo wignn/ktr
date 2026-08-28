@@ -203,6 +203,7 @@ export default function Home() {
       locationName: locationName.trim(),
       description: description.trim(),
       evidenceName: uploadedEvidenceName,
+      evidenceUrl: uploadedEvidenceUrl,
       createdAt: new Date().toLocaleDateString("id-ID", {
         day: "numeric",
         month: "short",
@@ -243,7 +244,8 @@ export default function Home() {
             settingCategoryLabel: selectedSettingObj ? selectedSettingObj.name : data.report.settingCategory,
             locationName: data.report.violationLocation,
             description: data.report.description,
-            evidenceName: data.report.evidenceUrl || undefined,
+            evidenceName: data.report.evidenceUrl ? (data.report.evidenceUrl.startsWith("http") ? data.report.evidenceUrl.split("/").pop() : data.report.evidenceUrl) : undefined,
+            evidenceUrl: data.report.evidenceUrl || undefined,
             status: data.report.status,
             notes: data.report.notes,
             createdAt: data.report.createdAt,

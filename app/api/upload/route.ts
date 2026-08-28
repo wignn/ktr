@@ -27,10 +27,11 @@ export async function POST(request: Request) {
       });
     }
 
-    // Unggah file asli ke Vercel Blob Storage
+    // Unggah file asli ke Vercel Blob Storage dengan random suffix unik agar tidak bentrok nama file
     const blob = await put(file.name, file, {
       access: "public",
       token,
+      addRandomSuffix: true,
     });
 
     return NextResponse.json({

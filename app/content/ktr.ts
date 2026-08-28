@@ -278,6 +278,7 @@ export interface KtrSavedReport {
   locationName: string;
   description: string;
   evidenceName?: string;
+  evidenceUrl?: string;
   createdAt: string;
   status: 'Menunggu review' | 'Diproses' | 'Selesai' | 'Ditolak';
   notes?: string;
