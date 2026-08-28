@@ -228,22 +228,22 @@ export const KTR_SETTINGS: KtrSetting[] = [
 ];
 
 export const KTR_REGULATION: KtrRegulationContent = {
-  title: 'Aturan harus hadir di setiap ruang bersama.',
+  title: 'Payung Hukum Resmi Kawasan Tanpa Rokok (KTR)',
   summary:
-    'Kawasan Tanpa Rokok ditetapkan untuk melindungi masyarakat dari asap rokok. Dasar hukum nasional dan peraturan daerah perlu dibaca bersama sesuai wilayah kewenangannya.',
-  source: 'UU No. 17 Tahun 2023 tentang Kesehatan — rujukan umum, perlu dilengkapi aturan daerah target.',
+    'Penerapan Kawasan Tanpa Rokok (KTR) memiliki landasan hukum yang kuat mulai dari Peraturan Daerah (Perda) Kabupaten Karawang hingga Undang-Undang Kesehatan Republik Indonesia untuk menjamin hak atas udara bersih bagi seluruh warga.',
+  source: 'Perda Kab. Karawang No. 5 Tahun 2018 tentang KTR & UU No. 17 Tahun 2023 tentang Kesehatan',
   prohibitions: [
-    'Merokok di area yang ditetapkan sebagai Kawasan Tanpa Rokok.',
-    'Memproduksi, menjual, atau menyediakan produk tembakau di area yang dilarang oleh aturan setempat.',
-    'Mengiklankan, mempromosikan, atau mensponsori produk rokok di area KTR.',
-    'Membiarkan fasilitas merokok, asbak, atau media promosi rokok di lokasi yang seharusnya bebas asap.',
+    'Merokok atau mengisap vape/rokok elektrik di area 7 Tatanan Kawasan Tanpa Rokok.',
+    'Menjual atau menyediakan produk tembakau/rokok di fasilitas pelayanan kesehatan, tempat pendidikan, tempat bermain anak, dan tempat ibadah.',
+    'Mengiklankan, mempromosikan, atau memasang spanduk/reklame produk rokok di area KTR.',
+    'Membiarkan fasilitas asbak atau tempat merokok di lokasi terlarang tanpa izin resmi.',
   ],
   sanctions: [
-    'Sanksi bagi perorangan yang merokok di KTR mengikuti ketentuan peraturan daerah setempat.',
-    'Pimpinan atau pengelola dapat dikenai sanksi apabila membiarkan pelanggaran atau tidak memasang tanda larangan yang diwajibkan.',
+    'Sanksi perorangan yang terbukti merokok di area KTR dikenakan sanksi denda administratif hingga pidana kurungan sesuai ketentuan Perda setempat.',
+    'Sanksi bagi pimpinan/pengelola gedung yang membiarkan pelanggaran berupa teguran tertulis, denda administratif, hingga pembekuan izin usaha.',
   ],
   verificationNote:
-    'Nominal denda, sanksi sosial, kewenangan penindakan, dan Perda/Perbup/Perwali target belum diisi karena wilayah portal belum ditentukan. Verifikasi sebelum publikasi.',
+    'Peraturan Daerah Kabupaten Karawang No. 5 Tahun 2018 juncto Peraturan Bupati Karawang.',
 };
 
 export const KTR_REPORT: KtrReportContent = {

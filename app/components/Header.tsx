@@ -22,6 +22,13 @@ export default function Header() {
         {/* Top Header Row: Brand Title & Mobile Menu Toggle */}
         <div className="flex items-center justify-between w-full lg:w-auto shrink-0">
           <div className="flex items-center gap-2.5">
+            <Image
+              src="/logo-ktr.png"
+              alt="Logo KTR"
+              width={32}
+              height={32}
+              className="w-7 h-7 sm:w-8 sm:h-8 object-contain shrink-0"
+            />
             <span className="text-xs sm:text-sm font-semibold tracking-tight text-slate-900">
               KAWASAN TANPA ROKOK
             </span>

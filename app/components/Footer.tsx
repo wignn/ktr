@@ -64,11 +64,20 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500 pt-4">
-          <div className="space-y-1 text-center md:text-left">
-            <p className="font-bold text-sm text-slate-900 tracking-tight">
-              Portal Kawasan Tanpa Rokok (KTR)
-            </p>
-            <p className="text-slate-600">Edukasi Bahaya Merokok & Hak Atas Udara Bersih bagi Masyarakat.</p>
+          <div className="flex items-center gap-3 text-center md:text-left">
+            <Image
+              src="/logo-ktr.png"
+              alt="Logo KTR"
+              width={36}
+              height={36}
+              className="w-9 h-9 object-contain shrink-0"
+            />
+            <div className="space-y-0.5">
+              <p className="font-bold text-sm text-slate-900 tracking-tight">
+                Portal Kawasan Tanpa Rokok (KTR)
+              </p>
+              <p className="text-slate-600">Edukasi Bahaya Merokok & Hak Atas Udara Bersih bagi Masyarakat.</p>
+            </div>
           </div>
           <p className="text-slate-400 font-mono text-[11px]">
             © 2026 Portal KTR. Dilindungi Undang-Undang Kesehatan.

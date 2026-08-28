@@ -13,6 +13,9 @@ const lexend = Lexend({
 export const metadata: Metadata = {
   title: 'Portal Kawasan Tanpa Rokok (KTR) — Kabupaten Karawang',
   description: 'Portal Edukasi Bahaya Merokok, Regulasi Hukum KTR, dan Layanan Pengaduan Pelanggaran Warga Bebas Asap Rokok.',
+  icons: {
+    icon: '/logo-ktr.png',
+  },
 };
 
 export default function RootLayout({
