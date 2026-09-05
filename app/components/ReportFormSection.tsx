@@ -129,7 +129,7 @@ export default function ReportFormSection({
           Formulir Pengaduan Pelanggaran KTR
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed font-normal">
-          Temukan aktivitas merokok, asbak terlarang, atau promosi tembakau di area bebas rokok? Kirimkan informasi secara aman untuk diverifikasi oleh Satgas KTR. Identitas Anda dijamin 100% rahasia.
+          Jika anda menemukan aktivitas merokok/ vape, penyediaan asbak, atau promosi produk tembakau di Kawasan Tanpa Rokok, Silahkan kirimkan informasi secara aman untuk diverifikasi oleh Satgas KTR. Identitas Anda dijamin 100% rahasia.
         </p>
       </div>
 

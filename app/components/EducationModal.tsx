@@ -47,7 +47,7 @@ export default function EducationModal({ selectedFact, onClose }: EducationModal
                   <h4 className="font-bold text-slate-900 text-sm">
                     {sec.heading}
                   </h4>
-                  <p className="text-slate-600 leading-relaxed font-normal">
+                  <p className="text-slate-600 leading-relaxed font-normal whitespace-pre-line">
                     {sec.content}
                   </p>
                 </div>

@@ -74,55 +74,100 @@ export const KTR_HERO: KtrHeroContent = {
 
 export const KTR_EDUCATION_FACTS: KtrEducationFact[] = [
   {
-    title: 'Asap tangan kedua',
-    body: 'Paparan asap rokok dari orang lain dapat mengganggu saluran pernapasan, memicu ISPA dan asma, serta meningkatkan risiko penyakit serius.',
-    accent: 'secondhand smoke',
+    title: 'Kawasan Tanpa Rokok (KTR)',
+    body: 'Jangan merokok, jangan menyalakan rokok, dan jangan membiarkan asap rokok mencemari udara di sekitar kita. Hormati hak setiap orang untuk mendapatkan udara yang bersih dan sehat.',
+    accent: 'kawasan tanpa rokok',
     detail: {
-      subtitle: 'Paparan Pasif yang Mematikan di Ruang Bersama',
+      subtitle: 'Lindungi Diri dan Orang di Sekitar Kita dari Bahaya Asap Rokok',
       sections: [
         {
-          heading: 'Bagaimana Asap Pasif Bekerja?',
-          content: 'Asap sampingan (side-stream smoke) yang keluar langsung dari ujung rokok yang terbakar mengandung konsentrasi zat beracun yang lebih tinggi daripada asap utama yang dihirup perokok. Paparan selama 30 menit saja sudah cukup merusak fungsi pembuluh darah.',
+          heading: 'Ciptakan Lingkungan Bebas Asap Rokok',
+          content:
+            'Menciptakan lingkungan bebas asap rokok merupakan salah satu upaya penting untuk melindungi kesehatan masyarakat. Oleh karena itu, penerapan Kawasan Tanpa Rokok (KTR) diperlukan agar setiap orang dapat memperoleh lingkungan yang lebih bersih, sehat, dan aman.',
         },
         {
-          heading: 'Risiko Kesehatan Utama',
-          content: 'Menghirup asap pasif secara terus-menerus meningkatkan risiko penyakit jantung sebesar 25–30%, kanker paru-paru sebesar 20–30%, serta serangan ISPA berulang pada anak-anak.',
+          heading: 'Asap Rokok Bukan Hanya Merugikan Perokok',
+          content:
+            'Rokok bukan hanya berdampak pada orang yang merokok, tetapi juga dapat membahayakan orang-orang di sekitarnya. Paparan tembakau dan asap rokok dapat menimbulkan berbagai gangguan kesehatan serta meningkatkan risiko penyakit serius.',
+        },
+        {
+          heading: 'Mengapa KTR Itu Penting?',
+          content:
+            'Penerapan Kawasan Tanpa Rokok bukan hanya bertujuan untuk melarang seseorang merokok. KTR bertujuan untuk melindungi masyarakat dari paparan asap rokok dan menciptakan lingkungan yang lebih sehat. KTR penting karena setiap orang memiliki hak untuk menghirup udara yang bersih tanpa harus terpapar asap rokok dari orang lain. Lingkungan yang benar-benar bebas asap rokok merupakan perlindungan yang paling efektif terhadap paparan asap rokok. Ventilasi atau pemisahan ruangan saja tidak dapat memberikan perlindungan yang sama seperti lingkungan yang sepenuhnya bebas asap rokok.',
         },
       ],
       highlights: [
-        'Lebih dari 4.000 zat kimia berbahaya terpancar di udara.',
-        'Tidak ada tingkat paparan asap pasif yang aman.',
-        'Sistem ventilasi atau kipas angin tidak bisa menghilangkan partikel asap.',
+        'KTR melindungi semua orang dari paparan asap rokok.',
+        'Paparan asap rokok dapat menyebabkan gangguan kesehatan meskipun seseorang bukan perokok aktif.',
+        'Asap rokok meningkatkan risiko berbagai penyakit.',
       ],
-      preventionTip: 'Selalu terapkan 100% Bebas Asap Rokok di dalam ruangan tanpa kompromi.',
+      preventionTip: 'Hormati hak setiap orang untuk mendapatkan udara yang bersih dan sehat dengan tidak merokok di area KTR.',
     },
   },
   {
-    title: 'Residu yang tertinggal',
-    body: 'Thirdhand smoke adalah residu racun yang menempel pada pakaian, perabot, dinding, dan permukaan ruangan setelah asap terlihat hilang.',
-    accent: 'thirdhand smoke',
+    title: 'Bahaya Rokok Bagi Kesehatan',
+    body: 'Rokok dapat merusak berbagai organ tubuh dan meningkatkan risiko penyakit serius. Jangan tunggu sampai dampaknya terasa! Berhenti merokok dan lindungi orang di sekitar dari asap rokok.',
+    accent: 'bahaya kesehatan',
     detail: {
-      subtitle: 'Ancaman Tak Terlihat yang Menempel Bertahun-tahun',
+      subtitle: 'Asapnya Singkat, Dampaknya Berkepanjangan.',
       sections: [
         {
-          heading: 'Apa itu Thirdhand Smoke?',
-          content: 'Partikel nikotin dan racun rokok mengendap pada permukaan karpet, pakaian, dinding, dan mainan anak. Partikel ini bereaksi dengan polutan udara membentuk senyawa karsinogenik baru yang menetap berbulan-bulan.',
+          heading: 'Apa Saja yang Rusak Karena Rokok?',
+          content:
+            'Tembakau dapat merusak hampir seluruh organ tubuh dan meningkatkan risiko berbagai penyakit. Penggunaan tembakau dapat menyebabkan atau meningkatkan risiko penyakit jantung, stroke, penyakit paru-paru, gangguan sistem pernapasan, kanker, serta gangguan kesehatan lainnya.',
         },
         {
-          heading: 'Siapa yang Paling Terancam?',
-          content: 'Balita yang merangkak di lantai dan sering memasukkan tangan ke mulut memiliki tingkat paparan 20 kali lebih tinggi terhadap racun residu ini dibanding orang dewasa.',
+          heading: 'Dampaknya Tidak Selalu Terlihat Langsung',
+          content:
+            'Bahaya rokok tidak selalu langsung dirasakan. Dampaknya dapat terjadi secara perlahan dan meningkatkan risiko munculnya penyakit dalam jangka panjang.',
+        },
+        {
+          heading: 'Dampak Rokok Bagi Kesehatan Antara Lain:',
+          content:
+            '1. Meningkatkan risiko penyakit jantung.\n2. Meningkatkan risiko stroke.\n3. Menyebabkan penyakit dan gangguan pada paru-paru.\n4. Meningkatkan risiko berbagai jenis kanker.\n5. Melemahkan sistem kekebalan tubuh.',
         },
       ],
       highlights: [
-        'Residu racun tidak bisa hilang hanya dengan menyapu atau membuka jendela.',
-        'Menempel erat pada pakaian perokok yang masuk ke rumah.',
-        'Meningkatkan risiko kanker dan kerusakan DNA pada sel tubuh.',
+        'Setiap batang rokok meningkatkan risiko penyakit serius.',
+        'Semua bentuk penggunaan tembakau berbahaya bagi kesehatan.',
+        'Berhenti merokok hari ini adalah investasi untuk kesehatan di masa depan.',
       ],
-      preventionTip: 'Jangan izinkan siapapun merokok di dalam gedung atau kendaraan pribadi.',
+      preventionTip: 'Berhenti merokok hari ini untuk memulihkan fungsi paru dan sirkulasi darah Anda.',
     },
   },
   {
-    title: 'Lindungi yang rentan',
+    title: 'Risiko Kesehatan Bagi Perokok Pasif',
+    body: 'Tidak merokok bukan berarti sepenuhnya aman apabila masih sering terpapar asap rokok dari orang lain.',
+    accent: 'perokok pasif',
+    detail: {
+      subtitle: 'Terpapar Asap, Terpapar Risiko.',
+      sections: [
+        {
+          heading: 'Apa Itu Perokok Pasif?',
+          content:
+            'Perokok pasif adalah orang yang tidak merokok, tetapi menghirup asap rokok dari orang lain atau dari rokok yang sedang menyala.',
+        },
+        {
+          heading: 'Asap Rokok Bukan Sekadar Asap',
+          content:
+            'Asap rokok mengandung berbagai zat kimia berbahaya yang dapat masuk ke dalam tubuh saat terhirup. Bukan hanya perokok yang terkena dampaknya, orang yang tidak merokok juga dapat mengalami gangguan kesehatan jika sering terpapar asap rokok, terutama ketika berada di rumah, kendaraan, atau lingkungan tertutup bersama perokok.',
+        },
+        {
+          heading: 'Sedikit Paparan, Tetap Ada Risikonya',
+          content:
+            'Tidak ada tingkat paparan asap rokok yang benar-benar aman bagi kesehatan. Paparan dalam waktu singkat sekalipun dapat memberikan dampak buruk, dan paparan yang terjadi berulang kali dapat meningkatkan risiko berbagai gangguan kesehatan dalam jangka panjang.',
+        },
+      ],
+      highlights: [
+        'Tidak ada paparan asap rokok yang sepenuhnya aman.',
+        'Perokok pasif berisiko mengalami penyakit jantung, stroke, dan gangguan pernapasan.',
+        'Anak-anak dan ibu hamil lebih rentan terhadap dampak asap rokok.',
+      ],
+      preventionTip: 'Hindari berada di satu ruangan dengan perokok aktif dan dukung penetapan KTR di tempat umum.',
+    },
+  },
+  {
+    title: 'Lindungi Mereka yang Rentan',
     body: 'Bayi, anak-anak, ibu hamil, dan lansia lebih rentan mengalami gangguan pernapasan, kekambuhan asma, dan dampak kesehatan lainnya.',
     accent: 'kelompok rentan',
     detail: {
@@ -130,47 +175,27 @@ export const KTR_EDUCATION_FACTS: KtrEducationFact[] = [
       sections: [
         {
           heading: 'Dampak pada Ibu Hamil & Janin',
-          content: 'Paparan racun menurunkan suplai oksigen ke janin, meningkatkan risiko berat badan lahir rendah (BBLR), kelahiran prematur, hingga sindrom kematian bayi mendadak (SIDS).',
+          content:
+            'Paparan asap rokok selama kehamilan dapat menyebabkan ibu menghirup berbagai zat berbahaya, termasuk nikotin dan karbon monoksida. Karbon monoksida dapat mengurangi kemampuan darah membawa oksigen sehingga suplai oksigen ke janin dapat terganggu. Hal ini dapat meningkatkan risiko berat badan lahir rendah (BBLR), kelahiran prematur, hingga sindrom kematian bayi mendadak (SIDS). Ibu hamil sebaiknya tidak hanya menghindari merokok, tetapi juga menghindari lingkungan yang memungkinkan terjadinya paparan asap rokok.',
         },
         {
-          heading: 'Dampak pada Anak & Lansia',
-          content: 'Paru-paru anak yang masih berkembang sangat rentan mengalami infeksi telinga tengah, asma berat, dan penurunan fungsi paru kronis saat dewasa.',
+          heading: 'Dampak pada Bayi & Anak-Anak',
+          content:
+            'Bayi dan anak-anak memiliki saluran pernapasan yang masih berkembang sehingga lebih mudah terdampak oleh polutan dan asap rokok. Paparan berulang dapat mengganggu kesehatan paru-paru dan meningkatkan risiko berbagai penyakit. Anak yang sering terpapar asap rokok lebih berisiko mengalami batuk dan sesak napas berulang, bronkitis dan pneumonia serta infeksi saluran pernapasan. Paparan asap rokok juga dapat menyebabkan anak lebih sering sakit sehingga aktivitas belajar, bermain, dan kehadiran di sekolah dapat terganggu. Rumah bebas asap rokok merupakan salah satu langkah penting untuk melindungi tumbuh kembang anak.',
+        },
+        {
+          heading: 'Dampak pada Lansia',
+          content:
+            'Lansia sering memiliki kondisi kesehatan yang membuat tubuh lebih rentan terhadap paparan asap rokok. Paparan asap rokok dapat memperburuk penyakit yang sudah ada, terutama penyakit pada jantung dan paru-paru. Pada lansia, paparan asap rokok dapat memperburuk penyakit paru kronis, meningkatkan gangguan pernapasan, hingga menurunkan kualitas hidup dan kemampuan melakukan aktivitas sehari-hari.',
         },
       ],
       highlights: [
+        'Ciptakan rumah dan lingkungan dengan udara yang bersih dan sehat.',
         'Anak dari perokok membolos sekolah 2x lebih sering akibat sakit pernapasan.',
         'Lansia penderita penyakit jantung riskan memicu serangan mendadak.',
         'Perlindungan KTR adalah investasi kesehatan generasi mendatang.',
       ],
-      preventionTip: 'Kawasan Tanpa Rokok memastikan tempat umum aman untuk semua kelompok usia.',
-    },
-  },
-  {
-    title: 'Tiga zat berbahaya',
-    body: 'Tar membawa banyak zat karsinogenik, nikotin menyebabkan ketergantungan, dan karbon monoksida mengurangi kemampuan darah membawa oksigen.',
-    accent: 'tar · nikotin · CO',
-    detail: {
-      subtitle: 'Segitiga Racun Pembunuh Utama dalam Setiap Isapan',
-      sections: [
-        {
-          heading: '1. Tar (Zat Karsinogenik)',
-          content: 'Partikel padat yang mengendap di paru-paru, melapisi alveolus, dan memicu mutasi sel menjadi kanker.',
-        },
-        {
-          heading: '2. Nikotin (Zat Adiktif)',
-          content: 'Zat kimia psikoaktif yang menjangkau otak dalam 7 detik, memicu kecanduan berat, meningkatkan denyut jantung, dan mempersempit pembuluh darah.',
-        },
-        {
-          heading: '3. Karbon Monoksida / CO (Gas Beracun)',
-          content: 'Gas tanpa warna dan bau yang mengikat hemoglobin darah 200x lebih kuat dibanding oksigen, menyebabkan organ tubuh kekurangan oksigen.',
-        },
-      ],
-      highlights: [
-        'Tar merusak silia pembersih alami di saluran pernapasan.',
-        'Nikotin mempercepat pengerasan pembuluh darah (Aterosklerosis).',
-        'CO membuat jantung bekerja 2 kali lebih keras.',
-      ],
-      preventionTip: 'Berhenti merokok memulihkan kadar CO darah menjadi normal hanya dalam 12 jam.',
+      preventionTip: 'Kawasan Tanpa Rokok menjamin tempat tumbuh kembang dan ruang publik aman untuk semua kelompok usia.',
     },
   },
 ];
@@ -192,7 +217,7 @@ export const KTR_SETTINGS: KtrSetting[] = [
   },
   {
     id: 'anak',
-    name: 'Tempat Anak Bermain',
+    name: 'Tempat Bermain Anak',
     description: 'Ruang khusus tumbuh kembang anak yang wajib dilindungi dari racun rokok dan sisa residu berbahaya.',
     examples: ['Taman Bermain Anak', 'Daycare', 'PAUD & TK', 'Area Rekreasi Anak'],
     image: 'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=800&q=80',
@@ -231,7 +256,7 @@ export const KTR_REGULATION: KtrRegulationContent = {
   title: 'Payung Hukum Resmi Kawasan Tanpa Rokok (KTR)',
   summary:
     'Penerapan Kawasan Tanpa Rokok (KTR) memiliki landasan hukum yang kuat mulai dari Peraturan Daerah (Perda) Kabupaten Karawang hingga Undang-Undang Kesehatan Republik Indonesia untuk menjamin hak atas udara bersih bagi seluruh warga.',
-  source: 'Perda Kab. Karawang No. 5 Tahun 2018 tentang KTR & UU No. 17 Tahun 2023 tentang Kesehatan',
+  source: 'Perda Kab. Karawang No. 5 Tahun 2016 tentang KTR & UU No. 17 Tahun 2023 tentang Kesehatan',
   prohibitions: [
     'Merokok atau mengisap vape/rokok elektrik di area 7 Tatanan Kawasan Tanpa Rokok.',
     'Menjual atau menyediakan produk tembakau/rokok di fasilitas pelayanan kesehatan, tempat pendidikan, tempat bermain anak, dan tempat ibadah.',
@@ -243,7 +268,7 @@ export const KTR_REGULATION: KtrRegulationContent = {
     'Sanksi bagi pimpinan/pengelola gedung yang membiarkan pelanggaran berupa teguran tertulis, denda administratif, hingga pembekuan izin usaha.',
   ],
   verificationNote:
-    'Peraturan Daerah Kabupaten Karawang No. 5 Tahun 2018 juncto Peraturan Bupati Karawang.',
+    'Peraturan Daerah Kabupaten Karawang No. 5 Tahun 2016 juncto Peraturan Bupati Karawang.',
 };
 
 export const KTR_REPORT: KtrReportContent = {

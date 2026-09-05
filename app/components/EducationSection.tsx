@@ -18,8 +18,12 @@ export default function EducationSection({ onSelectFact }: EducationSectionProps
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="scroll-mt-24 space-y-8"
     >
-      <div className="max-w-2xl space-y-2">
-        <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-800 font-mono">
+      <div className="max-w-3xl space-y-2">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-900 font-mono">
+          <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+          Selamat Datang di website laporktr-karawang
+        </div>
+        <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-800 font-mono pt-1">
           <Activity className="w-3.5 h-3.5" />
           Fakta Kesehatan & Racun
         </div>
